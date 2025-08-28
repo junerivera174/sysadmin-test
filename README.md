@@ -5,28 +5,29 @@ This project used ansible to automate the deployment of two apache webservers, m
 DOCUMENTATION - Ansible playbook
 ################################
 
-Before being able to use this playbook, ensure your environment is configured correctly! 
+Before being able to use the playbook in this project, ensure your environment is configured correctly! 
 
-(1) Ensure your ansible-user exists has the appropriate privileges on the control node and all managed nodes
-(2) Ensure you have properly set-up ssh-key authentication between your ansible control node and all managed nodes 
-(3) Ensure your local-dns file (/etc/hosts) is configured properly and resolves the ip addresses of all managed nodes
-(4) Lastly, ensure your ansible control node is able to properly communicate with all the managed nodes using the ping module 
-(5) All ansible playbooks are run with the command >> ansible-playbook <name_of_playbook> >> from the same project directory you are in
+(1) Ensure your ansible.cfg file and inventory file are configured correctly + must include roles directory 
+(2) Ensure your ansible-user exists and has the appropriate privileges on the control node and all managed nodes
+(3) Ensure you have properly set-up ssh-key authentication between your ansible control node and all managed nodes 
+(4) Ensure your local-dns file (/etc/hosts) is configured properly and resolves the ip addresses of all managed nodes
+(5) Ensure your ansible control node is able to properly communicate with all the managed nodes using the ping module 
+(6) All ansible playbooks are run with the command >> ansible-playbook <name_of_playbook> >> from the same directory the playbook is located in
 
 ***
-if you are unsure of how to complete these tasks - reference the playbook titled "ansible_setup.yml" 
+if you are unsure of how to complete these tasks - reference the playbook titled "ansible_setup.yml" or contact system administrator for further assistance 
 ***
 
-When looking at the ansible-playbooks, there are a few things to take into consideration when trying to deploy it:
+When looking at the ansible-playbooks deployment.yml, there are a few things to take into consideration when trying to deploy it:
 
-(1) The ansible playbook breaks down the different tasks into seperate roles (located within the roles directory) > this allows for more flexible deployment in case of future changes
+(1) The ansible playbook breaks down the different tasks into separate roles (located within the roles directory) > this allows for more flexible deployment in case of future changes
 
 the four roles include:
  - deploy_webserver, deploy_database, deploy_dns, deploy_backend
 
 (2) When possible, variables have been included to avoid hard-coding the syntax into the ansible playbook > this allows for more flexible deployment in case of future changes. However, there are still some aspects of the roles you should take into consideration:
 
-All ip addresses and passwords used are just for example purposes, when trying to implement the playbook in your own environment you should change the ip addresses as needed and create passwords in accordance with your companies password policies. This applies to the roles deploy_database and deploy_dns (shown below). 
+All ip addresses and passwords used are just for example purposes, when trying to implement the playbook deployment.yml in your own environment you should change the ip addresses as needed and create passwords in accordance with your companies password policies. This applies to the roles deploy_database and deploy_dns (shown below). 
 
 deploy_database (applies to the following tasks) 
 
